@@ -1,0 +1,18 @@
+.guest-table {
+    td, th { 
+        font-size: 20px; 
+        border-collapse: collapse;
+    }
+    th {
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 15px;
+    }
+
+    td {
+        padding: 5px 10px;
+    }
+
+    tr.odd {
+        background-color: #f2f2f2;
+    }
+}

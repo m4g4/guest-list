@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Button, Icon } from 'semantic-ui-react';
 
 import './App.scss';
 import Home from './pages/Home';
@@ -17,12 +18,8 @@ function App() {
     return (
         <div className="App">
             <header className="main-navigation">
-                <button className="circular ui massive icon button" onClick={registeredGuestsClick}>
-                    <i className="icon users"></i>
-                </button>
-                <button className="circular ui massive icon button" onClick={eventsClick}>
-                    <i className="icon calendar"></i>
-                </button>
+                <Button icon circular size='massive' onClick={registeredGuestsClick} ><Icon name='users' /></Button>
+                <Button icon circular size='massive' onClick={eventsClick} ><Icon name='calendar' /></Button>
             </header>
 
             <Routes>

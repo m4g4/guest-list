@@ -1,0 +1,17 @@
+.registered-guests-page {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+
+    .guest-table {
+        flex: 1 0 auto;
+    }
+
+    .registered-guests-controls {
+        border-top: 2px dashed #eee;
+        padding: 20px 10px;
+        flex: 0 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+}
