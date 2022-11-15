@@ -1,23 +1,14 @@
-import { useState } from 'react';
-import { Button, Icon } from 'semantic-ui-react';
-
-import AddGuest from '../components/AddGuest';
 
 import GuestList from '../components/GuestList';
 import { Guest } from '../interfaces';
 import './RegisteredGuestsPage.scss';
 
-export default function RegisteredGuestsPage() {
+export interface RegisteredGuestsPageProps {
+    guests: Guest[],
+    setGuests: (guests: Guest[] | ((current: Guest[]) => void)) => void
+}
 
-    // TODO load this list from the server
-    const initialGuests: Guest[] = [
-        { firstName: 'Matko', lastName: 'Gaborkoo', email: 'm@m.sk' },
-        { firstName: 'Anička', lastName: 'Repkovie', email: 'anicka@repkova.sk' },
-        { firstName: 'Gabika', lastName: 'Bezákovie', email: 'gabika@bezakovie.sk' },
-    ];
-
-    const [addGuestVisible, setAddGuestVisible] = useState(false);
-    const [guests, setGuests] = useState(initialGuests);
+export default function RegisteredGuestsPage({guests, setGuests}: RegisteredGuestsPageProps) {
 
     const removeGuest = (guest: Guest) => {
         setGuests((current) =>
@@ -25,26 +16,11 @@ export default function RegisteredGuestsPage() {
         );
     };
 
-    const addGuest = (guest: Guest) => {
-        setGuests([...guests, guest]);
-        setAddGuestVisible(false);
-    };
-
-    const addGuestPanel = addGuestVisible ? <AddGuest onAdd={addGuest}></AddGuest> : undefined;
-
-    const addGuestClick = () => {
-        setAddGuestVisible(true);
-    };
-
     return (
         <>
             <div className='registered-guests-page'>
                 <GuestList guests={guests} removeGuest={removeGuest}></GuestList>
-                <div className='registered-guests-controls'>
-                    <Button icon circular size='massive' onClick={addGuestClick} ><Icon name='add user' /></Button>
-                </div>
             </div>
-            {addGuestPanel}
         </>
     );
 }

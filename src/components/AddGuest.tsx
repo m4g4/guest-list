@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Form, Button, Icon } from 'semantic-ui-react';
 import { useInput } from '../hooks/useInput';
 
@@ -6,10 +7,11 @@ import { Guest } from '../interfaces';
 import './AddGuest.scss';
 
 type AddGuestProps = {
-  onAdd: (guest: Guest) => void
+  onAdd: (guest: Guest) => void,
+  onCancel: () => void
 }
 
-export default function AddGuest({ onAdd }: AddGuestProps) {
+export default function AddGuest({ onAdd, onCancel }: AddGuestProps) {
   
     const [name, nameInput] = useInput({placeholder: "Meno...", size: 'huge', icon: 'user'});
     const [email, emailInput] = useInput({placeholder: "Email...", size: 'huge', icon: 'mail'});
@@ -28,9 +30,23 @@ export default function AddGuest({ onAdd }: AddGuestProps) {
     const isEmailValid = (email: string) => {
         return /\S+@\S+\.\S+/.test(email);
     }
+  
+  const upHandler = (event: KeyboardEvent) => {
+    if (event.key === "Escape") {
+      onCancel();
+    }
+  };
+  
+  useEffect(() => {
+    window.addEventListener("keyup", upHandler);
+    return () => {
+      window.removeEventListener("keyup", upHandler);
+    };
+  });
 
   return (
     <div className='add-guest-panel'>
+        <div className='add-guest-blurred' onClick={() => onCancel()}></div>
         <div className='add-guest-form'>
                 <Form>
                   <Form.Field>

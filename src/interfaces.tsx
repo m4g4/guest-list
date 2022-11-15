@@ -3,3 +3,8 @@ export interface Guest {
     lastName: string,
     email: string
 }
+
+export interface ChoirEvent {
+    dateString: string,
+    membershipFee: number
+}

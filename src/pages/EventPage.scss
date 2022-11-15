@@ -1,0 +1,27 @@
+.event-page {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+
+    header {
+        background-color: #f2f2f2;
+        border-bottom: 2px solid #aaa;
+    }
+
+    .event-list-controls {
+        border-top: 2px dashed #eee;
+        padding: 20px 10px;
+        flex: 0 0 auto;
+        display: flex;
+        justify-content: center;
+
+        >div,
+        >div.ui.form .field {
+            margin: 0 15px 0 0 !important; // TODO FIX !important
+        
+            input {
+                min-width: 350px;
+            }
+        }
+    }
+}
